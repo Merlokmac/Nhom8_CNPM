@@ -278,7 +278,7 @@ public class RevenueController {
     }
 
     @PostMapping("/pay/{id}")
-    @PreAuthorize("hasRole('ADMIN') or or @userSecurity.isResidentOfApartment(#apartmentId)")
+    @PreAuthorize("hasRole('ADMIN') or @userSecurity.isResidentOfApartment(#apartmentId)")
     public ResponseEntity<?> payRevenue(@PathVariable Long id) {
         try {
             revenueService.markAsPaid(id);
