@@ -46,36 +46,22 @@ function Bill({
   const { darkMode } = controller;
 
   const handlePayment = async (bill) => {
-    console.log("sending data ------------------", bill);
     try {
-      // const revenueDTO = {
-      //   id: bill.id,
-      //   apartmentId: localStorage.getItem("apartmentId").toString(),
-      //   type: bill.type.toString(),
-      //   total: bill.total,
-      //   used: bill.used,
-      //   status: bill.status.toString(),
-      //   endDate: bill.endDate,
-      //   createDate: bill.createDate,
-      // };
-      // console.log("revenueDTO is: ---------------------", revenueDTO);
-      const pdfUrl = await createPDF(localStorage.getItem("apartmentId"), bill.id, "True");
-      // console.log("data is: ---------------------", data);
-      // setQrCodeData(data.qrCode);
-      // setOpenQRModal(true);
-      if (pdfUrl) {
-        // Mở PDF trong tab mới
-        window.location.href = pdfUrl;
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
-      } else {
-        alert("Cannot download PDF file.");
-      }
-      console.log("bill is: ---------------------", bill);
-    } catch (err) {
-      // alert("Could not create QR. Please try again.");
-      alert("Error creating PDF invoice.");
+      await axios.post(
+        `http://localhost:7070/revenue/pay/${bill.id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      alert("Payment successful!");
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+      alert("Payment failed!");
     }
   };
 

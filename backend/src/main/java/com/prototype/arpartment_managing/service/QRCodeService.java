@@ -15,7 +15,7 @@ import java.util.Base64;
 @Service
 public class QRCodeService {
 
-    @Value("${app.frontend-url:http://localhost:5000}")
+    @Value("${app.frontend-url:http://localhost:3000}")
     private String baseUrl;
 
     public String generateQRCodeImage(String paymentToken) throws WriterException, IOException {
@@ -29,4 +29,22 @@ public class QRCodeService {
         
         return Base64.getEncoder().encodeToString(outputStream.toByteArray());
     }
+    // thêm vào
+    public String generateQRCodImage(String text) {
+    try {
+        int width = 300;
+        int height = 300;
+
+        BitMatrix bitMatrix = new QRCodeWriter()
+                .encode(text, BarcodeFormat.QR_CODE, width, height);
+
+        ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
+        MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
+
+        return Base64.getEncoder().encodeToString(pngOutputStream.toByteArray());
+    } catch (Exception e) {
+        throw new RuntimeException("Failed to generate QR Code", e);
+    }
+}
+
 } 

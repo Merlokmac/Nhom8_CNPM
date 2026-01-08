@@ -32,14 +32,14 @@ import Footer from "layouts/authentication/components/Footer";
 function BasicLayout({ image, children }) {
   return (
     <PageLayout>
-      <DefaultNavbar
+      {/* <DefaultNavbar
         action={{
           type: "external",
           route: "https://github.com/Hepha4438/IT3180_2024II_SE_01/",
           label: "Out Github",
           color: "dark",
         }}
-      />
+      /> */}
       <MDBox
         position="absolute"
         width="100%"

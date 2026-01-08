@@ -52,7 +52,9 @@ public class SecurityConfig {
                         .requestMatchers("/user/register", "/user/create", "/fees").hasRole("ADMIN")
 
                         // Manager/admin endpoints
-                        .requestMatchers("/revenues/**", "/notifications/**").hasAnyRole("ADMIN", "MANAGER")
+                        .requestMatchers("/revenues/**", "/notifications/**").hasAnyRole("ADMIN")
+                        
+                        .requestMatchers("/revenue/pay/**").hasAnyRole("ADMIN", "USER")
 
                         // All other endpoints require authentication
                         .anyRequest().authenticated()

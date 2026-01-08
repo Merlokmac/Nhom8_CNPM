@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
 public class UserService {
     // @PostConstruct
     // public void printHash() {
-    //     System.out.println("HASH(admin123) = " + passwordEncoder.encode("admin123"));
+    //     System.out.println("HASH(user123) = " + passwordEncoder.encode("user123"));
     // } 
     // sau khi mvn spring-boot:run thì cmt 4 dòng trên  rồi chạy lại backend lần nữa là đăng nhập được
 

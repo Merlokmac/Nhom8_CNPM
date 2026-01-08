@@ -42,7 +42,7 @@ function Footer({ light }) {
           alignItems="center"
           px={1.5}
         >
-          <MDBox
+          {/* <MDBox
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -63,7 +63,7 @@ function Footer({ light }) {
               </MDTypography>
             </Link>
             for a better web.
-          </MDBox>
+          </MDBox> */}
           <MDBox
             component="ul"
             sx={({ breakpoints }) => ({
@@ -81,7 +81,7 @@ function Footer({ light }) {
               },
             })}
           >
-            <MDBox component="li" pr={2} lineHeight={1}>
+            {/* <MDBox component="li" pr={2} lineHeight={1}>
               <Link href="https://www.creative-tim.com/" target="_blank">
                 <MDTypography
                   variant="button"
@@ -124,7 +124,7 @@ function Footer({ light }) {
                   License
                 </MDTypography>
               </Link>
-            </MDBox>
+            </MDBox> */}
           </MDBox>
         </MDBox>
       </Container>

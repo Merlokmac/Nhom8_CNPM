@@ -17,7 +17,7 @@ Coded by www.creative-tim.com
 import PropTypes from "prop-types";
 
 // @mui material components
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
 
 // Material Dashboard 2 React components
@@ -34,11 +34,9 @@ function Footer({ company, links }) {
   const renderLinks = () =>
     links.map((link) => (
       <MDBox key={link.name} component="li" px={2} lineHeight={1}>
-        <Link href={link.href} target="_blank">
-          <MDTypography variant="button" fontWeight="regular" color="text">
-            {link.name}
-          </MDTypography>
-        </Link>
+        <MDTypography variant="button" fontWeight="regular" color="text">
+          {link.name}
+        </MDTypography>
       </MDBox>
     ));
 
@@ -67,11 +65,9 @@ function Footer({ company, links }) {
           </Icon>
         </MDBox>
         by
-        <Link href={href} target="_blank">
-          <MDTypography variant="button" fontWeight="medium">
-            &nbsp;{name}&nbsp;
-          </MDTypography>
-        </Link>
+        <MDTypography variant="button" fontWeight="medium">
+          &nbsp;{name}&nbsp;
+        </MDTypography>
       </MDBox>
       <MDBox
         component="ul"
@@ -100,13 +96,14 @@ function Footer({ company, links }) {
 Footer.defaultProps = {
   company: {
     href: "https://drive.google.com/drive/folders/1Smd8b8KQ8sN4YzpsHIvTcyota6bzHsI6",
-    name: "Nhóm 1",
+    name: "Nhóm 8",
   },
   links: [
-    { href: "https://www.facebook.com/ohai.189010", name: "Hoàng Hải" },
-    { href: "https://www.facebook.com/tama.sai.3726", name: "Tuấn Minh" },
-    { href: "https://www.facebook.com/ohepha", name: "Trung Hiếu" },
-    { href: "https://www.facebook.com/profile.php?id=100082992725730", name: "Thanh Tú" },
+    { name: "Hoàng Bảo" },
+    { name: "Kiêm Khang" },
+    { name: "Hoài Thu" },
+    { name: "Đình Tùng" },
+    { name: "Hoàng Phúc" },
   ],
 };
 

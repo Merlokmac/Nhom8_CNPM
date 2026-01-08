@@ -23,4 +23,16 @@ public interface RevenueRepository extends JpaRepository<Revenue, Long> {
     long countByTypeAndStatusNotIn(String type, List<String> statuses);
 
     Optional<Revenue> findByPaymentToken(String paymentToken);
+    // thêm vào
+    List<Revenue> findByApartment_ApartmentIdAndTypeIgnoreCase(
+        String apartmentId,
+        String type
+    );
+
+    // thêm vào
+    List<Revenue> findByApartment_ApartmentIdAndTypeNotIgnoreCase(
+        String apartmentId,
+        String type
+    );
+
 }

@@ -3,6 +3,7 @@ package com.prototype.arpartment_managing.controller;
 import com.prototype.arpartment_managing.dto.RevenueDTO;
 import com.prototype.arpartment_managing.model.Revenue;
 import com.prototype.arpartment_managing.scheduler.RevenueScheduler;
+// import com.prototype.arpartment_managing.service.InvoicePdfService;
 import com.prototype.arpartment_managing.service.RevenueService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin("http://localhost:5000")
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/revenue")
 public class RevenueController {
     @Autowired
@@ -273,6 +274,19 @@ public class RevenueController {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to retrieve revenue generation logs: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/pay/{id}")
+    @PreAuthorize("hasRole('ADMIN') or or @userSecurity.isResidentOfApartment(#apartmentId)")
+    public ResponseEntity<?> payRevenue(@PathVariable Long id) {
+        try {
+            revenueService.markAsPaid(id);
+            return ResponseEntity.ok("Payment successful");
+        } catch (Exception e) {
+            return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body("Payment failed: " + e.getMessage());
         }
     }
 }

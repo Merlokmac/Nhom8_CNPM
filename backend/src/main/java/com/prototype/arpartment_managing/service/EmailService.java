@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailService {
-    private static final String SENDER_EMAIL = "trunghieu310705@gmail.com";
+    private static final String SENDER_EMAIL = "vohoangbao180105@gmail.com";
     private static final String SENDER_PASSWORD = "zapj fxet dafl bbbo"; // Sử dụng mật khẩu ứng dụng nếu có bật 2FA
 
     public void sendOTPViaEmail(String recipientEmail, String otp) throws MessagingException {
