@@ -1,28 +1,42 @@
 package com.prototype.arpartment_managing.controller;
 
-import com.prototype.arpartment_managing.dto.UserDTO;
-import com.prototype.arpartment_managing.model.Apartment;
-import com.prototype.arpartment_managing.model.User;
-import com.prototype.arpartment_managing.repository.ApartmentRepository;
-import com.prototype.arpartment_managing.service.EmailService;
-import com.prototype.arpartment_managing.repository.UserRepository;
-import com.prototype.arpartment_managing.service.ApartmentResidentService;
-import com.prototype.arpartment_managing.service.UserService;
-import jakarta.transaction.Transactional;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.mail.MessagingException;
-import java.util.*;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import com.prototype.arpartment_managing.dto.UserDTO;
+import com.prototype.arpartment_managing.model.Apartment;
+import com.prototype.arpartment_managing.model.User;
+import com.prototype.arpartment_managing.repository.ApartmentRepository;
+import com.prototype.arpartment_managing.repository.UserRepository;
+import com.prototype.arpartment_managing.service.ApartmentResidentService;
+import com.prototype.arpartment_managing.service.EmailService;
+import com.prototype.arpartment_managing.service.UserService;
+
+import jakarta.transaction.Transactional;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:5000")
 @RequestMapping("/user")
 public class UserController {
 

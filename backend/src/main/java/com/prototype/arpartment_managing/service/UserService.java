@@ -1,17 +1,13 @@
 package com.prototype.arpartment_managing.service;
 
-import com.prototype.arpartment_managing.dto.UserDTO;
-import com.prototype.arpartment_managing.exception.ApartmentNotFoundException;
-import com.prototype.arpartment_managing.exception.UserNotFoundException;
-import com.prototype.arpartment_managing.exception.UserNotFoundExceptionUsername;
-import com.prototype.arpartment_managing.model.Apartment;
-import com.prototype.arpartment_managing.model.Notification;
-import com.prototype.arpartment_managing.model.User;
-import com.prototype.arpartment_managing.repository.ApartmentRepository;
-import com.prototype.arpartment_managing.repository.NotificationRepository;
-import com.prototype.arpartment_managing.token.JwtUtil;
-import com.prototype.arpartment_managing.token.TokenBlackList;
-import jakarta.transaction.Transactional;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
@@ -20,12 +16,21 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.prototype.arpartment_managing.dto.UserDTO;
+import com.prototype.arpartment_managing.exception.ApartmentNotFoundException;
+import com.prototype.arpartment_managing.exception.UserNotFoundException;
+import com.prototype.arpartment_managing.exception.UserNotFoundExceptionUsername;
+import com.prototype.arpartment_managing.model.Apartment;
+import com.prototype.arpartment_managing.model.Notification;
+import com.prototype.arpartment_managing.model.User; // thêm vào
+import com.prototype.arpartment_managing.repository.ApartmentRepository;
+import com.prototype.arpartment_managing.repository.NotificationRepository;
 import com.prototype.arpartment_managing.repository.UserRepository;
-import org.springframework.security.authentication.AuthenticationManager; // thêm vào
+import com.prototype.arpartment_managing.token.JwtUtil;
+import com.prototype.arpartment_managing.token.TokenBlackList;
 
-
-import java.util.*;
-import java.util.stream.Collectors;
+import jakarta.transaction.Transactional;
 
 // import jakarta.annotation.PostConstruct; // sau khi mvn spring-boot:run thì cmt dòng này
 
